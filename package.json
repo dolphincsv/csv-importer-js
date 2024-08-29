@@ -1,0 +1,42 @@
+{
+  "name": "@dolphincsv/csv-importer-js",
+  "version": "1.0.0",
+  "description": "DolphinCSV embeddable CSV importer SDK for Javascript",
+  "author": "DolphinCSV",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dolphincsv/csv-importer-js.git"
+  },
+  "homepage": "https://dolphincsv.com",
+  "type": "module",
+  "types": "dist/types/index.d.ts",
+  "main": "dist/packages/index.1.0.0.cjs.js",
+  "module": "dist/packages/index.1.0.0.es.js",
+  "exports": {
+    ".": {
+      "import": "./dist/packages/index.1.0.0.es.js",
+      "require": "./dist/packages/index.1.0.0.cjs.js",
+      "default": "./dist/packages/index.1.0.0.umd.js",
+      "types": "./dist/types/index.d.ts"
+    },
+    "./package.json": "./package.json"
+  },
+  "scripts": {
+    "build": "tsc && vite build && node update-package-json.cjs"
+  },
+  "files": [
+    "dist",
+    "src"
+  ],
+  "devDependencies": {
+    "@types/node": "^20.14.9",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.5.2",
+    "vite": "^5.3.5"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5"
+  },
+  "browser": "dist/packages/index.1.0.0.umd.js"
+}
