@@ -15,7 +15,7 @@ If you ever get stuck or need any help, feel free to click the chat button on th
 ### Node.js
 
 ```bash
-npm install @dolphincsv/csv-import-js
+npm install @dolphincsv/csv-importer-js
 ```
 
 ### Browser (JavaScript)
