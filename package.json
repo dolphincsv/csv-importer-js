@@ -11,13 +11,13 @@
   "homepage": "https://dolphincsv.com",
   "type": "module",
   "types": "dist/types/index.d.ts",
-  "main": "dist/packages/index.1.0.5.cjs.js",
-  "module": "dist/packages/index.1.0.5.es.js",
+  "main": "dist/packages/index.1.0.6.cjs.js",
+  "module": "dist/packages/index.1.0.6.es.js",
   "exports": {
     ".": {
-      "import": "./dist/packages/index.1.0.5.es.js",
-      "require": "./dist/packages/index.1.0.5.cjs.js",
-      "default": "./dist/packages/index.1.0.5.umd.js",
+      "import": "./dist/packages/index.1.0.6.es.js",
+      "require": "./dist/packages/index.1.0.6.cjs.js",
+      "default": "./dist/packages/index.1.0.6.umd.js",
       "types": "./dist/types/index.d.ts"
     },
     "./package.json": "./package.json"
@@ -38,7 +38,7 @@
   "dependencies": {
     "dotenv": "^16.4.5"
   },
-  "browser": "dist/packages/index.1.0.5.umd.js",
+  "browser": "dist/packages/index.1.0.6.umd.js",
   "bugs": {
     "url": "https://github.com/dolphincsv/csv-importer-js/issues"
   },
