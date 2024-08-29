@@ -2,7 +2,7 @@
 
 **[DolphinCSV](https://dolphincsv.com)** is an **embeddable CSV importer** designed to help your users import spreadsheet data into your product. It works out of the box and takes just 10 minutes to set up.
 
-You can embed the **DolphinCSV importer** in your product by using our JavaScript SDKs. Click here if you're looking for the **[React SDK](https://github.com/dolphincsv/)**.
+You can embed the **DolphinCSV importer** in your product by using our JavaScript SDKs. Click here if you're looking for the **[React SDK](https://github.com/dolphincsv/react-csv-importer)**.
 
 To get your **Client ID**, **[create an account](https://service.dolphincsv.com/auth)**.
 
@@ -15,7 +15,7 @@ If you ever get stuck or need any help, feel free to click the chat button on th
 ### Node.js
 
 ```bash
-npm install @dolphincsv/csv-importer-js
+npm install @dolphincsv/csv-importer-js -s
 ```
 
 ### Browser (JavaScript)
