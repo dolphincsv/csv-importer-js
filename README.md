@@ -6,6 +6,8 @@ You can embed the **DolphinCSV importer** in your product by using our JavaScrip
 
 To get your **Client ID**, **[create an account](https://service.dolphincsv.com/auth)**.
 
+Check out our **[documentation here](https://docs.dolphincsv.com)**.
+
 If you ever get stuck or need any help, feel free to click the chat button on the bottom right of our **[website](https://dolphincsv.com)**, and we'll assist you.
 
 ## Installation
