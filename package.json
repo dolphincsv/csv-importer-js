@@ -1,6 +1,6 @@
 {
   "name": "@dolphincsv/csv-importer",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "DolphinCSV embeddable CSV importer SDK for Javascript",
   "author": "DolphinCSV",
   "license": "MIT",
