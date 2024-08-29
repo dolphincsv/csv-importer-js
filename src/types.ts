@@ -123,9 +123,9 @@ type ProductionImporterParams = BaseImporterParams & {
 
 type DemoImporterParams = BaseImporterParams & {
   mode: 'demo';
-  columns?: undefined;
-  templateKey?: undefined;
-  clientId?: undefined;
+  columns?: never;
+  templateKey?: never;
+  clientId?: never;
 };
 
 export type ImporterParams = ProductionImporterParams | DemoImporterParams;
