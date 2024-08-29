@@ -1,12 +1,12 @@
 {
-  "name": "@dolphincsv/csv-importer-js",
+  "name": "@dolphincsv/csv-importer",
   "version": "1.0.3",
   "description": "DolphinCSV embeddable CSV importer SDK for Javascript",
   "author": "DolphinCSV",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/dolphincsv/csv-importer-js.git"
+    "url": "git+https://github.com/dolphincsv/csv-importer-js.git"
   },
   "homepage": "https://dolphincsv.com",
   "type": "module",
@@ -38,5 +38,16 @@
   "dependencies": {
     "dotenv": "^16.4.5"
   },
-  "browser": "dist/packages/index.1.0.0.umd.js"
+  "browser": "dist/packages/index.1.0.0.umd.js",
+  "bugs": {
+    "url": "https://github.com/dolphincsv/csv-importer-js/issues"
+  },
+  "keywords": [
+    "csv",
+    "spreadsheet",
+    "sheet",
+    "import",
+    "importer",
+    "javascript"
+  ]
 }
