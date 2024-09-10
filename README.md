@@ -21,7 +21,7 @@ npm install @dolphincsv/csv-importer-js -s
 ### Browser (JavaScript)
 
 ```html
-<script src="https://unpkg.com/@dolphincsv/csv-importer-js/dist/packages/index.1.0.0.umd.js" type="text/javascript"></script>
+<script src="https://unpkg.com/@dolphincsv/csv-importer-js/dist/packages/index.1.0.10.umd.js" type="text/javascript"></script>
 ```
 
 ## Usage
@@ -29,7 +29,7 @@ npm install @dolphincsv/csv-importer-js -s
 ### Node.js
 
 ```javascript
-import { DolphinCSVImporter } from "@dolphincsv/importer";
+import { DolphinCSVImporter } from "@dolphincsv/csv-importer-js";
 
 var importer = DolphinCSVImporter({
     mode: 'development',
