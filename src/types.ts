@@ -112,6 +112,11 @@ type BaseImporterParams = {
   onSuccess: (data: any) => void;
   onError: (error: any) => void;
   onClose: () => void;
+  theme?: {
+    colors?: {
+      primary?: string
+    },
+  };
 };
 
 type ProductionImporterParams = BaseImporterParams & {

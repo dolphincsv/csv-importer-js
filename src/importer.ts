@@ -24,6 +24,7 @@ export class DolphinCSVImporter {
   _onSuccess
   _onError
   _onClose
+  _theme
 
   constructor(params: ImporterParams) {
     if (params.mode === undefined) throw new Error(ErrorMessages.noMode)
@@ -35,6 +36,7 @@ export class DolphinCSVImporter {
     this._onSuccess = params.onSuccess
     this._onError = params.onError
     this._onClose = params.onClose
+    this._theme = params.theme
 
     if (params.mode !== 'demo') {
       this._clientId = params?.clientId
@@ -208,6 +210,7 @@ export class DolphinCSVImporter {
       template_key: this._templateKey,
       columns: this._columns,
       mode: this._mode,
+      theme: this._theme,
     }
     if (this._launched) return
 
