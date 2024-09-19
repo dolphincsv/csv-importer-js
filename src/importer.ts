@@ -255,6 +255,7 @@ export class DolphinCSVImporter {
     iframe.style.width = '90%'
     iframe.style.height = '90%'
     iframe.style.borderWidth = '0px'
+    iframe.style.zIndex = '100'
     this._iframe = iframe
 
     if (parent) {
