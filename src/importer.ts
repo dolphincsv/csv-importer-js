@@ -123,6 +123,7 @@ export class DolphinCSVImporter {
     parent.style.display = 'flex'
     parent.style.justifyContent = 'center'
     parent.style.alignItems = 'center'
+    parent.style.zIndex = '100'
 
     const loadingElement = document.createElement('div')
     loadingElement.style.position = 'absolute'
