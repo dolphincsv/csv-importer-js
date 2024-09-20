@@ -1,7 +1,7 @@
-import {ImporterModes, ImporterParams, JwtAuthenticationParams, SimpleClientIdAuthenticationParams} from "./types";
-import {ErrorMessages} from "./errorMessages";
+import {ImporterModes, ImporterParams, JwtAuthenticationParams, SimpleClientIdAuthenticationParams} from './types';
+import {ErrorMessages} from './errorMessages';
 
-const IFRAME_ID = "__dolphincsv__iframe"
+const IFRAME_ID = '__dolphincsv__iframe'
 const IFRAME_URL = import.meta.env.VITE_IFRAME_URL as string || 'https://dolphincsv.com/embed'
 
 
@@ -17,6 +17,7 @@ export class DolphinCSVImporter {
   _loadingElement?: HTMLElement
   _iframeHasLoaded = false
   _maxLaunchRetries = 5
+  _extraData
   _clientId?
   _iFrameClassName
   _columns?
@@ -37,11 +38,29 @@ export class DolphinCSVImporter {
     this._onError = params.onError
     this._onClose = params.onClose
     this._theme = params.theme
+    this._extraData = params.extraData
 
     if (params.mode !== 'demo') {
       this._clientId = params?.clientId
       this._templateKey = params?.templateKey
 
+      if (params.extraData !== undefined && this._extraData !== undefined) {
+        if (typeof params.extraData !== 'object') {
+          throw new Error('the extraData property must be an object')
+        }
+
+        for (let key in params.extraData) {
+          const extraDataValue = params.extraData[key];
+
+          if (extraDataValue === undefined || extraDataValue === null || (typeof extraDataValue === 'number' && isNaN(extraDataValue))) {
+            this._extraData[key] = null
+          }
+
+          if (!['string', 'number', 'boolean'].includes(typeof extraDataValue)) {
+            throw new Error('values in extraData must be a string, number, or boolean')
+          }
+        }
+      }
 
       const columns = params?.columns || [];
 
@@ -95,8 +114,8 @@ export class DolphinCSVImporter {
           throw new Error('Picklist columns must contain a non-empty `options` array in the `meta` object. Please refer to https://docs.dolphincsv.com/configuring-columns.')
         }
 
-        const labels =  col.meta.options.map(o => o?.label || '')
-        const values =  col.meta.options.map(o => o?.value || '')
+        const labels = col.meta.options.map(o => o?.label || '')
+        const values = col.meta.options.map(o => o?.value || '')
 
         if (labels.length !== [...new Set(labels)].length) {
           throw new Error('Picklist option labels must be unique')
@@ -194,7 +213,7 @@ export class DolphinCSVImporter {
   }
 
   _removeSelf() {
-    if (this._parent){
+    if (this._parent) {
       this._parent.remove()
     }
 
@@ -212,6 +231,7 @@ export class DolphinCSVImporter {
       columns: this._columns,
       mode: this._mode,
       theme: this._theme,
+      extra_data: this._extraData,
     }
     if (this._launched) return
 
@@ -246,7 +266,7 @@ export class DolphinCSVImporter {
   _setupIframe(parent?: HTMLElement) {
     let iframe = document.getElementById(IFRAME_ID) as HTMLIFrameElement
     if (!iframe) {
-      iframe = document.createElement("iframe")
+      iframe = document.createElement('iframe')
       iframe.id = IFRAME_ID
     }
 
