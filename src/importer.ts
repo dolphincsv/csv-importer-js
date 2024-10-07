@@ -30,7 +30,6 @@ export class DolphinCSVImporter {
   constructor(params: ImporterParams) {
     if (params.mode === undefined) throw new Error(ErrorMessages.noMode)
     if (params.mode !== 'demo' && !params.templateKey) throw new Error(ErrorMessages.noTemplateKey)
-    if (params.mode !== 'demo' && !params.columns?.length) throw new Error(ErrorMessages.noColumns)
 
     this._mode = params.mode
     this._iFrameClassName = params.iFrameClassName
@@ -74,11 +73,6 @@ export class DolphinCSVImporter {
       if (colKeys.length !== [...new Set(colKeys)].length) {
         throw new Error('Column labels must be unique')
       }
-
-      if (!columns.length || typeof columns !== 'object') {
-        throw new Error('columns must be a non-empty array')
-      }
-
 
       columns.forEach((col) => {
         if (!col.type || !col.key) {

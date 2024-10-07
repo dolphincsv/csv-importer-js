@@ -124,7 +124,7 @@ type BaseImporterParams = {
 
 type ProductionImporterParams = BaseImporterParams & {
   mode: 'development' | 'production';
-  columns: Template;
+  columns?: Template;
   templateKey: string;
   clientId: string;
 };
