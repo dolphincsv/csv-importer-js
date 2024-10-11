@@ -5,5 +5,6 @@ export const ErrorMessages = {
   noColumns: 'Please provide a columns argument. Read more about how to configure columns at https://docs.dolphincsv.com/configuring-columns.',
   // clientIdWarning: 'Warning: Using client ID authentication means anyone with access to the client ID can send data to your importer. Since the client ID is exposed in the browser, if the client ID is leaked, an attacker can use that client ID to send arbitrary data to your importer. If you are displaying user uploaded data somewhere else in your application, please ensure all incoming data is sanitized & escaped properly by your application, or use JWT authentication instead. Read more here: [Link]',
   launchFailed: 'DolphinCSV importer has failed to initialize',
-  iFrameEmpty: 'iFrame contentWindow is null and the iframe has never been closed'
+  iFrameEmpty: 'iFrame contentWindow is null and the iframe has never been closed',
+  invalidRowLimit: 'row_limit property, if provided, must be a number'
 }

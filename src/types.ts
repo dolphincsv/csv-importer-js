@@ -119,7 +119,8 @@ type BaseImporterParams = {
   };
   extraData?: {
     [key: string]: string | number | boolean | null | undefined;
-  }
+  };
+  rowLimit?: number;
 };
 
 type ProductionImporterParams = BaseImporterParams & {

@@ -26,10 +26,12 @@ export class DolphinCSVImporter {
   _onError
   _onClose
   _theme
+  _rowLimit
 
   constructor(params: ImporterParams) {
     if (params.mode === undefined) throw new Error(ErrorMessages.noMode)
     if (params.mode !== 'demo' && !params.templateKey) throw new Error(ErrorMessages.noTemplateKey)
+    if (params.rowLimit && typeof params.rowLimit !== 'number') throw new Error(ErrorMessages.invalidRowLimit)
 
     this._mode = params.mode
     this._iFrameClassName = params.iFrameClassName
@@ -38,6 +40,7 @@ export class DolphinCSVImporter {
     this._onClose = params.onClose
     this._theme = params.theme
     this._extraData = params.extraData
+    this._rowLimit = params.rowLimit
 
     if (params.mode !== 'demo') {
       this._clientId = params?.clientId
@@ -226,7 +229,9 @@ export class DolphinCSVImporter {
       mode: this._mode,
       theme: this._theme,
       extra_data: this._extraData,
+      row_limit: this._rowLimit,
     }
+
     if (this._launched) return
 
     if (retryCount >= this._maxLaunchRetries) {
