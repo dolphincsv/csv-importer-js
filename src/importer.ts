@@ -67,23 +67,23 @@ export class DolphinCSVImporter {
       const columns = params?.columns || [];
 
       const colLabels = columns.map(col => col.label)
-      const colKeys = columns.map(col => col.key)
+      const colRefs = columns.map(col => col.internal_ref)
 
       if (colLabels.length !== [...new Set(colLabels)].length) {
         throw new Error('Column labels must be unique')
       }
 
-      if (colKeys.length !== [...new Set(colKeys)].length) {
+      if (colRefs.length !== [...new Set(colRefs)].length) {
         throw new Error('Column labels must be unique')
       }
 
       columns.forEach((col) => {
-        if (!col.type || !col.key) {
+        if (!col.type || !col.internal_ref) {
           throw new Error('Each column must have a type and a key.')
         }
 
-        if (typeof col.key !== 'string') {
-          throw new TypeError(`Column keys must be strings. Column key ${col.key} is not a string.`)
+        if (typeof col.internal_ref !== 'string') {
+          throw new TypeError(`Column references must be strings. Column reference ${col.internal_ref} is not a string.`)
         }
 
         if (![

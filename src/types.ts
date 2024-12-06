@@ -1,5 +1,5 @@
 type SharedColumnFields = {
-  key: string;
+  internal_ref: string;
   label: string;
   required?: boolean;
 };
