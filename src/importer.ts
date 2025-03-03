@@ -2,6 +2,7 @@ import {ImporterModes, ImporterParams, JwtAuthenticationParams, SimpleClientIdAu
 import {ErrorMessages} from './errorMessages';
 
 const IFRAME_ID = '__dolphincsv__iframe'
+const LOADER_ID = '__dolphincsv__loader'
 const IFRAME_URL = import.meta.env.VITE_IFRAME_URL as string || 'https://dolphincsv.com/embed'
 
 
@@ -52,13 +53,12 @@ export class DolphinCSVImporter {
         }
 
         for (let key in params.extraData) {
+
           const extraDataValue = params.extraData[key];
 
           if (extraDataValue === undefined || extraDataValue === null || (typeof extraDataValue === 'number' && isNaN(extraDataValue))) {
             this._extraData[key] = null
-          }
-
-          if (!['string', 'number', 'boolean'].includes(typeof extraDataValue)) {
+          } else if (!['string', 'number', 'boolean'].includes(typeof extraDataValue)) {
             throw new Error('values in extraData must be a string, number, or boolean')
           }
         }
@@ -142,6 +142,7 @@ export class DolphinCSVImporter {
     parent.style.zIndex = '100'
 
     const loadingElement = document.createElement('div')
+    loadingElement.id = LOADER_ID
     loadingElement.style.position = 'absolute'
     loadingElement.style.top = '5%'
     loadingElement.style.left = '5%'
