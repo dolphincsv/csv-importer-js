@@ -1,9 +1,63 @@
 import {ImporterModes, ImporterParams, JwtAuthenticationParams, SimpleClientIdAuthenticationParams} from './types';
 import {ErrorMessages} from './errorMessages';
 
+const IFRAME_PARENT_ID = '__dolphincsv__parent'
 const IFRAME_ID = '__dolphincsv__iframe'
 const LOADER_ID = '__dolphincsv__loader'
 const IFRAME_URL = import.meta.env.VITE_IFRAME_URL as string || 'https://dolphincsv.com/embed'
+
+const STYLES = `
+#${IFRAME_PARENT_ID} {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+
+#${LOADER_ID} {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    z-index: -1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0;
+}
+
+#${IFRAME_ID} {
+    width: 100%;
+    height: 100%;
+    border-width: 0px;
+    z-index: 100;
+    border-radius: 0;
+}
+
+@media (min-width: 767px) {
+    #${LOADER_ID} {
+        top: 5%;
+        left: 5%;
+        width: 90%;
+        height: 90%;
+        border-radius: 1rem;
+    }
+
+    #${IFRAME_ID} {
+        width: 90%;
+        height: 90%;
+        border-radius: 1rem;
+    }
+}
+`;
 
 
 export class DolphinCSVImporter {
@@ -129,32 +183,19 @@ export class DolphinCSVImporter {
 
   launch() {
 
+    const existingStyleTag = document.getElementById('__dolphincsv__styles');
+    if (!existingStyleTag) {
+      const styleElement = document.createElement('style');
+      styleElement.id = '__dolphincsv__styles';
+      styleElement.innerHTML = STYLES;
+      document.head.appendChild(styleElement);
+    }
+
     const parent = document.createElement('div')
-    parent.style.position = 'fixed'
-    parent.style.top = '0'
-    parent.style.left = '0'
-    parent.style.width = '100%'
-    parent.style.height = '100%'
-    parent.style.backgroundColor = 'rgba(0,0,0, 0.3)'
-    parent.style.display = 'flex'
-    parent.style.justifyContent = 'center'
-    parent.style.alignItems = 'center'
-    parent.style.zIndex = '100'
+    parent.id = IFRAME_PARENT_ID
 
     const loadingElement = document.createElement('div')
     loadingElement.id = LOADER_ID
-    loadingElement.style.position = 'absolute'
-    loadingElement.style.top = '5%'
-    loadingElement.style.left = '5%'
-    loadingElement.style.width = '90%'
-    loadingElement.style.height = '90%'
-    loadingElement.style.backgroundColor = 'white'
-    loadingElement.innerText = 'Loading...'
-    loadingElement.style.zIndex = '-1'
-    loadingElement.style.display = 'flex'
-    loadingElement.style.justifyContent = 'center'
-    loadingElement.style.alignItems = 'center'
-    loadingElement.style.borderRadius = '1rem'
 
     this._loadingElement = loadingElement
 
@@ -273,10 +314,6 @@ export class DolphinCSVImporter {
 
     iframe.src = this._mode === 'demo' ? IFRAME_URL + '?demo=true' : IFRAME_URL
     iframe.className = this._iFrameClassName || ''
-    iframe.style.width = '90%'
-    iframe.style.height = '90%'
-    iframe.style.borderWidth = '0px'
-    iframe.style.zIndex = '100'
     this._iframe = iframe
 
     if (parent) {
@@ -284,11 +321,5 @@ export class DolphinCSVImporter {
     } else {
       document.body.append(iframe)
     }
-  }
-
-  _isUsingJwtAuthentication(
-    auth: JwtAuthenticationParams | SimpleClientIdAuthenticationParams
-  ): auth is JwtAuthenticationParams {
-    return (auth as JwtAuthenticationParams).jwt !== undefined;
   }
 }
