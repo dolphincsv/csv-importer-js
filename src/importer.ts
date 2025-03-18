@@ -259,6 +259,7 @@ export class DolphinCSVImporter {
     this._closed = true
     this._iframe = undefined
     this._iframeHasLoaded = false
+    document.body.style.overflow = 'auto'
   }
 
   _sendLaunchMessageWithRetry(retryCount = 0) {
@@ -321,5 +322,8 @@ export class DolphinCSVImporter {
     } else {
       document.body.append(iframe)
     }
+
+    document.body.style.overflow = 'hidden'
+    
   }
 }
