@@ -1,6 +1,6 @@
 {
   "name": "@dolphincsv/csv-importer-js",
-  "version": "1.0.23",
+  "version": "1.0.24",
   "description": "DolphinCSV embeddable CSV importer SDK for Javascript",
   "author": "DolphinCSV",
   "license": "MIT",
@@ -11,13 +11,13 @@
   "homepage": "https://dolphincsv.com",
   "type": "module",
   "types": "dist/types/index.d.ts",
-  "main": "dist/packages/index.1.0.23.cjs.js",
-  "module": "dist/packages/index.1.0.23.es.js",
+  "main": "dist/packages/index.1.0.24.cjs.js",
+  "module": "dist/packages/index.1.0.24.es.js",
   "exports": {
     ".": {
-      "import": "./dist/packages/index.1.0.23.es.js",
-      "require": "./dist/packages/index.1.0.23.cjs.js",
-      "default": "./dist/packages/index.1.0.23.umd.js",
+      "import": "./dist/packages/index.1.0.24.es.js",
+      "require": "./dist/packages/index.1.0.24.cjs.js",
+      "default": "./dist/packages/index.1.0.24.umd.js",
       "types": "./dist/types/index.d.ts"
     },
     "./package.json": "./package.json"
@@ -34,7 +34,7 @@
   "dependencies": {
     "dotenv": "^16.4.5"
   },
-  "browser": "dist/packages/index.1.0.23.umd.js",
+  "browser": "dist/packages/index.1.0.24.umd.js",
   "bugs": {
     "url": "https://github.com/dolphincsv/csv-importer-js/issues"
   },
