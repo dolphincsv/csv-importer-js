@@ -26,7 +26,6 @@ const STYLES = `
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: white;
     z-index: -1;
     display: flex;
     justify-content: center;
@@ -315,7 +314,15 @@ export class DolphinCSVImporter {
 
     iframe.src = this._mode === 'demo' ? IFRAME_URL + '?demo=true' : IFRAME_URL
     iframe.className = this._iFrameClassName || ''
+    iframe.style.visibility = 'hidden'
     this._iframe = iframe
+
+    iframe.addEventListener('load', function() {
+      setTimeout(() => {
+        iframe.style.visibility = 'visible'
+      }, 300)
+
+    })
 
     if (parent) {
       parent.appendChild(iframe)

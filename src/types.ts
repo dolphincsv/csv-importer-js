@@ -107,16 +107,51 @@ export interface JwtAuthenticationParams {
   jwt: string;
 }
 
+type Theme = {
+  colors?: {
+    primary?: string
+    primaryText?: string
+    background?: string
+    headingText?: string
+    text?: string
+
+    border?: string
+    muted?: string
+    mutedForeground?: string
+    subtle?: string
+
+    danger?: string
+    dangerForeground?: string
+
+
+    tableHeaderBg?: string
+    tableHeaderText?: string
+    tableCellBg?: string
+    tableCellText?: string
+    tableGridLine?: string
+    discardedRowsBg?: string
+    discardedRowsForeground?: string
+  }
+
+  radius?: {
+    button?: string
+    chip?: string
+    dropdown?: string
+  },
+
+  typography?: {
+    heading?: string,
+    body?: string,
+    size?: string,
+  }
+}
+
 type BaseImporterParams = {
   iFrameClassName?: string;
   onSuccess: (data: any) => void;
   onError: (error: any) => void;
   onClose: () => void;
-  theme?: {
-    colors?: {
-      primary?: string
-    },
-  };
+  theme?: Theme;
   extraData?: {
     [key: string]: string | number | boolean | null | undefined;
   };
@@ -138,3 +173,4 @@ type DemoImporterParams = BaseImporterParams & {
 };
 
 export type ImporterParams = ProductionImporterParams | DemoImporterParams;
+
