@@ -85,7 +85,7 @@ export class DolphinCSVImporter {
   constructor(params: ImporterParams) {
     if (params.mode === undefined) throw new Error(ErrorMessages.noMode)
     if (params.mode !== 'demo' && !params.templateKey) throw new Error(ErrorMessages.noTemplateKey)
-    if (params.rowLimit && typeof params.rowLimit !== 'number') throw new Error(ErrorMessages.invalidRowLimit)
+    if (params.rowLimit && typeof params.rowLimit !== 'number' && !/^\d+$/.test(params.rowLimit)) throw new Error(ErrorMessages.invalidRowLimit)
 
     this._mode = params.mode
     this._iFrameClassName = params.iFrameClassName
